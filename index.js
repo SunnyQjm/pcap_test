@@ -12,6 +12,8 @@ tcpTracker.on('session', function (session) {
 console.log(pcap.findalldevs());
 
 pcap_session.on('packet', function (raw_packet) {
+    console.log(raw_packet);
     const packet = pcap.decode.packet(raw_packet);
+    console.log(JSON.stringify(packet));
     tcpTracker.track_packet(packet);
 });
