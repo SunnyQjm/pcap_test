@@ -1,6 +1,8 @@
+const arguments = process.argv.splice(2);
+
 const pcap = require('pcap'),
     tcpTracker = new pcap.TCPTracker(),
-    pcap_session = pcap.createSession('eno1', "ether proto \\ip");
+    pcap_session = pcap.createSession(arguments[0], "ether proto \\ip");
 
 tcpTracker.on('session', function (session) {
     console.log("Start of session between " + session.src_name + " and " + session.dst_name);
